@@ -8,6 +8,7 @@
     name,逻辑数据库名，与server.xml中的schema对应。
     checkSQLschema,数据库前缀相关设置，建议看文档，这里暂时设为folse。
     sqlMaxLimit,select 时默认的limit，避免查询全表。-->
+    <schema name="micro_web" checkSQLschema="false" sqlMaxLimit="100" dataNode="dn1"></schema>
     <schema name="test_db" checkSQLschema="false" sqlMaxLimit="100">
         <!--t_test表根据 id 进行十进制求模运算-->
         <table name="t_test" primaryKey="id" autoIncrement="true" dataNode="dn1,dn2" rule="mod-long"></table>
