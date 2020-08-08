@@ -8,7 +8,7 @@
     name,逻辑数据库名，与server.xml中的schema对应。
     checkSQLschema,数据库前缀相关设置，建议看文档，这里暂时设为folse。
     sqlMaxLimit,select 时默认的limit，避免查询全表。-->
-    <schema name="micro_web" checkSQLschema="false" sqlMaxLimit="100" dataNode="dn1"></schema>
+    <schema name="micro_web" checkSQLschema="false" sqlMaxLimit="100" dataNode="dn3"></schema>
     <schema name="test_db" checkSQLschema="false" sqlMaxLimit="100">
         <!--t_test表根据 id 进行十进制求模运算-->
         <table name="t_test" primaryKey="id" autoIncrement="true" dataNode="dn1,dn2" rule="mod-long"></table>
@@ -20,6 +20,7 @@
     <!-- 设置dataNode 对应的数据库,及 mycat 连接的地址dataHost -->
     <dataNode name="dn1" dataHost="dh1" database="test_db"/>
     <dataNode name="dn2" dataHost="dh2" database="test_db"/>
+    <dataNode name="dn3" dataHost="dh1" database="micro_web"/>
 
 
     <!-- mycat 逻辑主机dataHost对应的物理主机.其中也设置对应的mysql登陆信息 -->
