@@ -119,4 +119,25 @@ services:
                 ipv4_address: 192.18.0.7
         links:
             - master2
+    mycat:
+        build: ./mycat
+        container_name: mycat
+        restart: always
+        volumes:
+            - ./mycat/conf/server.xml:/home/mycat/conf/server.xml
+            - ./mycat/conf/schema.xml:/home/mycat/conf/schema.xml
+            - ./mycat/conf/rule.xml:/home/mycat/conf/rule.xml
+        ports:
+            - "8066:8066"
+            - "9066:9066"
+        links:
+            - master1
+            - slave11
+            - slave12
+            - master2
+            - slave21
+            - slave22
+        networks:
+            mysql:
+                ipv4_address: 192.18.0.8
 
