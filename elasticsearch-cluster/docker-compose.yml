@@ -95,6 +95,18 @@ services:
       - es01
       - es02
       - es03
+  elasticsearch-head:
+    image: mobz/elasticsearch-head:5
+    container_name: elasticsearch-head
+    restart: always
+    ports:
+      - 9100:9100
+    networks:
+      - elastic
+    depends_on:
+      - es01
+      - es02
+      - es03
 
 networks:
   elastic:
