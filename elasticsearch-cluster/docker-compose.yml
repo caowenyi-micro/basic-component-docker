@@ -112,25 +112,19 @@ services:
     container_name: logstash-es
     restart: always
     privileged: true
-    logging:
-      driver: json-file
-      options:
-        max-size: 50m
-    ports:
-      - 5044:5044
-      - 9600:9600
     volumes:
       - ./logstash/jars/mysql-connector-java-8.0.16.jar:/usr/share/logstash/logstash-core/lib/jars/mysql-connector-java-8.0.16.jar
       - ./logstash/config/logstash.conf:/usr/share/logstash/config/logstash.conf
-    environment:
-      - xpack.monitoring.elasticsearch.hosts=http://10.100.11.36:9200
-      - http.host= 0.0.0.0
-    networks:
-      - elastic
     depends_on:
       - es01
       - es02
       - es03
+    links:
+      - es01:es
+    networks:
+      - elastic
+    ports:
+      - 4560:4560
 
 networks:
   elastic:
