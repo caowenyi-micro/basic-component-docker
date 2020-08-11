@@ -121,7 +121,6 @@ services:
       - 9600:9600
     volumes:
       - ./logstash/jars/mysql-connector-java-8.0.16.jar:/usr/share/logstash/logstash-core/lib/jars/mysql-connector-java-8.0.16.jar
-      - ./logstash/log:/var/log/logstash/logstash-plain.log
       - ./logstash/config/logstash.conf:/usr/share/logstash/config/logstash.conf
     environment:
       - xpack.monitoring.elasticsearch.hosts=http://10.100.11.36:9200
