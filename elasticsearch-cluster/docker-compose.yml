@@ -1,7 +1,8 @@
 version: '2'
 services:
   es01:
-    image: docker.elastic.co/elasticsearch/elasticsearch:6.8.10
+    #image: docker.elastic.co/elasticsearch/elasticsearch:6.8.10
+    image: elasticsearch-ik:latest
     container_name: es01
     privileged: true
     environment:
@@ -28,7 +29,8 @@ services:
       - elastic
 
   es02:
-    image: docker.elastic.co/elasticsearch/elasticsearch:6.8.10
+    #image: docker.elastic.co/elasticsearch/elasticsearch:6.8.10
+    image: elasticsearch-ik:latest
     container_name: es02
     privileged: true
     environment:
@@ -55,7 +57,8 @@ services:
       - elastic
 
   es03:
-    image: docker.elastic.co/elasticsearch/elasticsearch:6.8.10
+    #image: docker.elastic.co/elasticsearch/elasticsearch:6.8.10
+    image: elasticsearch-ik:latest
     container_name: es03
     privileged: true
     environment:
