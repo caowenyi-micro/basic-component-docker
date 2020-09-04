@@ -7,6 +7,8 @@ services:
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
       - ./data:/data
+      - ./rules:/etc/prometheus/rules/
+      - ./node-exporter/groups/:/usr/local/prometheus/groups/
     ports:
       - 9090:9090
     environment:
@@ -14,6 +16,11 @@ services:
       - TZ=Asia/Shanghai
     command:
       - --config.file=/etc/prometheus/prometheus.yml
+      - --storage.tsdb.path=/data
+    depends_on:
+      - cadvisor
+      - alertmanager
+      - node-exporter
   cadvisor:
     image: gcr.io/google-containers/cadvisor:latest
     container_name: cadvisor
@@ -24,11 +31,32 @@ services:
       - /var/run:/var/run:rw
       - /sys:/sys:ro
       - /var/lib/docker/:/var/lib/docker:ro
+  node-exporter:
+    image: 'prom/node-exporter:latest'
+    container_name: node-exporter
+    ports:
+      - 9100:9100
+    environment:
+      # 设置时区为上海，否则时间会有问题
+      - TZ=Asia/Shanghai
   grafana:
     image: 'grafana/grafana:latest'
     container_name: grafana
     ports:
       - 3000:3000
+    environment:
+      # 设置时区为上海，否则时间会有问题
+      - TZ=Asia/Shanghai
+    depends_on:
+      - prometheus
+  alertmanager:
+    image: 'prom/alertmanager:latest'
+    container_name: alertmanager
+    volumes:
+      - ./alertmanager/alertmanager.yml:/etc/alertmanager/alertmanager.yml:ro
+      - ./alertmanager/tmpl/:/etc/alertmanager-tmpl/
+    ports:
+      - 9093:9093
     environment:
       # 设置时区为上海，否则时间会有问题
       - TZ=Asia/Shanghai
