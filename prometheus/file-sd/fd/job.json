@@ -1,0 +1,26 @@
+[
+  {
+    "targets": [ "cadvisor:8080"],
+    "labels": {
+      "env": "dev",
+      "job": "cadvisor",
+      "job_name": "cadvisor"
+    }
+  },{
+    "targets": [ "mysqld-exporter:9104"],
+    "labels": {
+      "env": "dev",
+      "job": "mysqld-exporter",
+      "job_name": "mysqld-exporter"
+    }
+  },{
+    "targets": ["node-exporter:9100"],
+    "labels": {
+      "env": "dev",
+      "instance": "vm-10.100.11.36",
+      "service": "node-service",
+      "job": "node-exporter",
+      "job_name": "node-exporter"
+    }
+  }
+]
