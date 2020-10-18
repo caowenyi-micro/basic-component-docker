@@ -1,0 +1,10 @@
+[
+  {
+    "targets": [ "10.100.11.36:8102","10.100.11.36:8101","10.100.11.36:8201","10.100.11.36:8202","10.100.11.36:8081"],
+    "labels": {
+      "env": "dev",
+      "job": "springcloud-micro-service",
+      "job_name": "springcloud-micro-service"
+    }
+  }
+]

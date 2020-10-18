@@ -1,0 +1,40 @@
+[
+  {
+    "targets": [ "cadvisor:8080"],
+    "labels": {
+      "env": "dev",
+      "job": "cadvisor",
+      "job_name": "cadvisor"
+    }
+  },{
+    "targets": [ "10.100.11.36:9104"],
+    "labels": {
+      "env": "dev",
+      "job": "mysqlexporter",
+      "job_name": "mysqlexporter"
+    }
+  },{
+    "targets": ["nodeexporter:9100"],
+    "labels": {
+      "env": "dev",
+      "instance": "vm-10.100.11.36",
+      "service": "node-service",
+      "job": "nodeexporter",
+      "job_name": "nodeexporter"
+    }
+  },{
+    "targets": [ "localhost:9090"],
+    "labels": {
+      "env": "dev",
+      "job": "prometheus",
+      "job_name": "prometheus"
+    }
+  },{
+  "targets": [ "pushgateway:9091"],
+  "labels": {
+    "env": "dev",
+    "job": "pushgateway",
+    "job_name": "pushgateway"
+    }
+  }
+]

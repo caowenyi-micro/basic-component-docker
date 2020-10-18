@@ -1,0 +1,11 @@
+[
+  {
+    "targets": [
+      "node-exporter:9100"
+    ],
+    "labels": {
+      "instance": "vm-10.100.11.36",
+      "service": "node-service"
+    }
+  }
+]

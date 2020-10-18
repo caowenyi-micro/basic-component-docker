@@ -1,6 +1,6 @@
 version: '2'
 services:
-    mysql:
+    mysql-standalone:
         network_mode: "bridge"
         environment:
             MYSQL_ROOT_PASSWORD: "123456"
@@ -11,5 +11,5 @@ services:
             - "./conf/my.cnf:/etc/my.cnf"
             - "./init:/docker-entrypoint-initdb.d/"
         ports:
-            - "3306:3306"
-        container_name: mysql
+            - "3336:3306"
+        container_name: mysql-standalone
